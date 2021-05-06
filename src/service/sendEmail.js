@@ -3,20 +3,14 @@ import config from "../config";
 
 const transporter = nodemailer.createTransport(config);
 
-var mailOptions = {
-  from: "youremail@gmail.com",
-  to: "myfriend@yahoo.com",
-  subject: "Sending Email using Node.js",
-  text: "That was easy!",
+const callback = (error, info) => {
+  if (error) {
+    console.log(error);
+  }
 };
 
-const sendEmail = () =>
-  transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log("Email sent: " + info.response);
-    }
-  });
+const sendEmail = (message) => {
+  transporter.sendMail(message, callback);
+};
 
 export default sendEmail;

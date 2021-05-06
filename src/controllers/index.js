@@ -1,3 +1,3 @@
-import sendMail from "./sendMail";
+import welcome from "./welcome";
 
-export { sendMail };
+export { welcome };

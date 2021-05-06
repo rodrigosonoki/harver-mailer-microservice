@@ -1,8 +1,8 @@
 import express from "express";
-import { sendMail } from "../controllers";
+import { welcome } from "../controllers";
 
 const router = express.Router();
 
-router.get("/", sendMail);
+router.post("/welcome", welcome);
 
 export default router;

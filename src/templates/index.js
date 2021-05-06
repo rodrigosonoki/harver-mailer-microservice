@@ -1,3 +1,4 @@
-import welcome from "./welcome";
+import welcomeTemplate from "./welcome";
+import resetPassword from "./resetPassword";
 
-export { welcome };
+export { welcomeTemplate, resetPassword };
