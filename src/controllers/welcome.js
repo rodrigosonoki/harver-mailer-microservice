@@ -1,21 +1,23 @@
 import sendEmail from "../service/sendEmail";
-import { welcomeTemplate } from "../templates";
+import { welcomeMessage } from "../messages";
 
 async function welcome(req, res) {
-  const { to } = req.body;
+  const { to, name } = req.body;
 
   const message = {
     from: "sender@server.com",
   };
 
-  message.subject = welcomeTemplate.subject;
-  message.html = welcomeTemplate.html;
-  message.text = welcomeTemplate.text;
+  const data = welcomeMessage(name);
+
+  message.subject = data.subject;
+  message.html = data.html;
+  message.text = data.text;
 
   message.to = to;
 
   try {
-    sendEmail(message);
+    await sendEmail(message);
     return res.status(200).json({ message: "E-mail enviado com sucesso." });
   } catch (err) {
     console.log(err);
